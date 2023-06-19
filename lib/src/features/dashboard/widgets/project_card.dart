@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:threev_project_manager_app/src/features/dashboard/models/project.dart';
 
@@ -20,7 +21,12 @@ class ProjectCard extends StatelessWidget {
           title: Text(project.name),
           subtitle: Text(project.description),
           trailing: TextButton(
-            onPressed: () {},
+            onPressed: () => context.goNamed(
+              "PROJECT",
+              pathParameters: {
+                "id": project.id,
+              },
+            ),
             child: const Text("Select"),
           ),
         ),
