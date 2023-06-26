@@ -24,7 +24,7 @@ class MyApp extends ConsumerWidget {
       ],
       onGenerateTitle: (BuildContext context) =>
           AppLocalizations.of(context)!.appTitle,
-      theme: ThemeData(useMaterial3: true),
+      theme: ThemeData(),
       darkTheme: ThemeData.dark(),
       routerConfig: AppRouter.router,
     );
