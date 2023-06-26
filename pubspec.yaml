@@ -18,7 +18,6 @@ dependencies:
   hooks_riverpod: ^2.3.6
   intl: ^0.18.0
   uuid: ^3.0.7
-  drag_and_drop_lists: ^0.3.3
   dotted_border: ^2.0.0+3
 
 dev_dependencies:
