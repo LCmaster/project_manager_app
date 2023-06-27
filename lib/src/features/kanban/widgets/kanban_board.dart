@@ -7,7 +7,9 @@ class KanbanBoard extends StatefulWidget {
     this.onReorder,
     this.cardGap = 0,
     this.columnGap = 0,
+    this.headerGap = 0,
     this.columnWidth = 150,
+    required this.onCardTap,
     required this.cardCount,
     required this.columnCount,
     required this.cardBuilder,
@@ -17,10 +19,13 @@ class KanbanBoard extends StatefulWidget {
   final int columnCount;
   final List<int> cardCount;
 
+  final double headerGap;
+
   final double cardGap;
   final double columnGap;
   final double columnWidth;
 
+  final void Function(int columnIndex, int cardIndex) onCardTap;
   final void Function(int oldColumn, int oldIndex, int newColumn, int newIndex)?
       onReorder;
 
@@ -161,13 +166,19 @@ class _KanbanBoardState extends State<KanbanBoard> {
         ),
         child: SizedBox(
           width: widget.columnWidth,
-          child: Card(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: widget.cardBuilder(
-                context,
-                _columns[columnIndex].index,
-                _columns[columnIndex].cards[index].index,
+          child: GestureDetector(
+            onTap: () => widget.onCardTap(
+              _columns[columnIndex].index,
+              _columns[columnIndex].cards[index].index,
+            ),
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: widget.cardBuilder(
+                  context,
+                  _columns[columnIndex].index,
+                  _columns[columnIndex].cards[index].index,
+                ),
               ),
             ),
           ),
@@ -187,12 +198,18 @@ class _KanbanBoardState extends State<KanbanBoard> {
           child: Column(
             key: _columns[i].key,
             children: [
-              widget.columnHeaderBuilder(context, i),
+              Padding(
+                padding: EdgeInsets.only(bottom: widget.headerGap),
+                child: widget.columnHeaderBuilder(context, i),
+              ),
               Expanded(
-                child: ListView.builder(
+                child: ListView.separated(
                   itemCount: _columns[i].cards.length,
                   itemBuilder: (context, index) =>
                       _buildColumnCard(context, i, index),
+                  separatorBuilder: (context, index) => SizedBox(
+                    height: widget.cardGap,
+                  ),
                 ),
               ),
             ],
@@ -269,12 +286,19 @@ class _KanbanBoardState extends State<KanbanBoard> {
           }
         }
       },
-      child: ListView.builder(
+      child: ListView.separated(
         key: _listViewKey,
         controller: _scrollController,
         scrollDirection: Axis.horizontal,
         itemCount: columns.length,
-        itemBuilder: (context, index) => columns[index],
+        itemBuilder: (context, index) {
+          return columns[index];
+        },
+        separatorBuilder: (context, index) {
+          return SizedBox(
+            width: widget.columnGap,
+          );
+        },
       ),
     );
   }
