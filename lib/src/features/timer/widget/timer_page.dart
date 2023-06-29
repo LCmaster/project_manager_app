@@ -8,46 +8,95 @@ class TimerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         SizedBox(
           height: 32,
         ),
-        Text(
-          "Project name",
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 32.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Text(
-            "Task description: Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-            style: TextStyle(fontSize: 24),
+            "Project name",
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
         ),
-        Spacer(),
-        Container(
-          width: double.infinity,
-          height: 128,
-          padding: EdgeInsets.symmetric(horizontal: 64.0),
-          child: FittedBox(child: Text("00:15")),
-        ),
-        SizedBox(
-          height: 96,
-          child: Align(
-            alignment: Alignment.topCenter,
-            child: Icon(
-              Icons.arrow_drop_down,
-              size: 40,
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Text(
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+              style: TextStyle(fontSize: 24),
             ),
           ),
         ),
-        SizedBox(height: 128, child: TimerSlider()),
-        SizedBox(
-          height: 64,
-          child: FilledButton(
-            onPressed: () {},
-            child: Icon(Icons.play_arrow),
+        Divider(),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Text(
+            "Hours",
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
           ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Text(
+            "00",
+            style: TextStyle(fontSize: 96, fontWeight: FontWeight.w100),
+          ),
+        ),
+        // Padding(
+        //   padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        //   child: Text(
+        //     "minutes",
+        //     style: TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
+        //   ),
+        // ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Text(
+            "Minutes",
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Row(
+            children: [
+              Text(
+                "00",
+                style: TextStyle(fontSize: 96, fontWeight: FontWeight.w100),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Text(
+            "Seconds",
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Text(
+            "00",
+            style: TextStyle(fontSize: 96, fontWeight: FontWeight.w100),
+          ),
+        ),
+        SizedBox(
+          height: 32,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: SizedBox(
+              height: 80,
+              width: double.infinity,
+              child: FilledButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Start",
+                    style: TextStyle(fontSize: 24),
+                  ))),
         ),
         SizedBox(
           height: 32,

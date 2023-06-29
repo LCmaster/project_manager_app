@@ -6,16 +6,30 @@ class TimerSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          return SizedBox(
-            width: constraints.maxWidth,
-            height: constraints.maxWidth / 2,
-            child: Transform.scale(
-                scale: 2, child: TimerClock(radius: constraints.maxWidth / 2)),
-          );
+    return Container(
+      color: Colors.red,
+      child: GestureDetector(
+        onTap: () {
+          print("On Tap");
         },
+        onTapDown: (details) {
+          print("On Tap Down");
+        },
+        onHorizontalDragUpdate: (details) {
+          print("On Drag Update");
+        },
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SizedBox(
+              width: constraints.maxWidth,
+              height: constraints.maxWidth / 3,
+              // child: Transform.scale(
+              //   scale: 2,
+              //   child: TimerClock(radius: constraints.maxWidth / 2),
+              // ),
+            );
+          },
+        ),
       ),
     );
   }
