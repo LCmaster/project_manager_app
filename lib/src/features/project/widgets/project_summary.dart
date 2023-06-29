@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:threev_project_manager_app/src/features/kanban/widgets/kanban_board.dart';
 import 'package:threev_project_manager_app/src/features/kanban/widgets/kanban_card.dart';
 import 'package:threev_project_manager_app/src/features/kanban/widgets/kanban_stage_header.dart';
-import 'package:threev_project_manager_app/src/features/project/pages/task_details_page.dart';
+// import 'package:threev_project_manager_app/src/features/project/pages/task_details_page.dart';
 
 class ProjectSummary extends StatefulWidget {
   const ProjectSummary({super.key});

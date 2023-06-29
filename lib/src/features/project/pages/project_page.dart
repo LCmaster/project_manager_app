@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:threev_project_manager_app/src/features/project/widgets/project_summary.dart';
+import 'package:threev_project_manager_app/src/features/timer/widget/timer_page.dart';
 
 class ProjectPage extends StatefulWidget {
   const ProjectPage({super.key});
@@ -19,7 +20,7 @@ class _ProjectPageState extends State<ProjectPage> {
           "Project name",
         ),
       ),
-      body: const ProjectSummary(),
+      body: const TimerPage(),
     );
   }
 }
